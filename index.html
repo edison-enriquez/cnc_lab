@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador CNC - Brazo Paralelo 5 Barras y Motor por Eje</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- KaTeX para renderizado de ecuaciones LaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #312e81 100%);
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script type="text/babel" src="brazo_paralelo_5barras.jsx"></script>
+    <script type="text/babel" src="motor_por_eje.jsx"></script>
+    <script type="text/babel">
+        const { useState } = React;
+
+        function App() {
+            const [tipoMaquina, setTipoMaquina] = useState('paralelo');
+
+            return (
+                <div className="max-w-[1600px] mx-auto">
+                    {/* Header */}
+                    <header className="bg-white rounded-xl shadow-2xl p-6 mb-6">
+                        <h1 className="text-4xl font-bold text-center mb-3 bg-gradient-to-r from-blue-900 to-indigo-900 bg-clip-text text-transparent">
+                            Simulador CNC - Laboratorio de Algoritmia
+                        </h1>
+                        <p className="text-center text-gray-600 mb-6">
+                            Simula y programa robots CNC con diferentes configuraciones de ejes
+                        </p>
+                        
+                        {/* Selector de tipo de máquina */}
+                        <div className="flex gap-4 max-w-4xl mx-auto">
+                            <button
+                                onClick={() => setTipoMaquina('paralelo')}
+                                className={`flex-1 py-4 rounded-lg font-bold text-lg transition-all transform hover:scale-105 ${
+                                    tipoMaquina === 'paralelo'
+                                        ? 'bg-gradient-to-r from-blue-900 to-blue-800 text-white shadow-xl'
+                                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                }`}
+                            >
+                                <div>Brazo Paralelo 5 Barras</div>
+                                <div className="text-xs opacity-75 mt-1">(Parallel 5-Bar Linkage)</div>
+                            </button>
+                            
+                            <button
+                                onClick={() => setTipoMaquina('cartesiano')}
+                                className={`flex-1 py-4 rounded-lg font-bold text-lg transition-all transform hover:scale-105 ${
+                                    tipoMaquina === 'cartesiano'
+                                        ? 'bg-gradient-to-r from-indigo-900 to-indigo-800 text-white shadow-xl'
+                                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                }`}
+                            >
+                                <div>Motor por Eje (X, Y)</div>
+                                <div className="text-xs opacity-75 mt-1">(Cartesian CNC)</div>
+                            </button>
+                        </div>
+                    </header>
+
+                    {/* Contenido principal */}
+                    <main>
+                        {tipoMaquina === 'paralelo' ? <BrazoParalelo5Barras /> : <MotorPorEje />}
+                    </main>
+
+                    {/* Footer */}
+                    <footer className="mt-8 text-center text-white text-sm opacity-90">
+                        <p>© 2025 Laboratorio CNC - Algoritmia</p>
+                        <p className="mt-1">Simulador educativo de sistemas CNC</p>
+                    </footer>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>
