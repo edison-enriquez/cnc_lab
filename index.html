@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador CNC - Brazo Paralelo 5 Barras y Motor por Eje</title>
+    <title>Simulador CNC - DrawBot | UNIAJC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -15,35 +16,261 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
     
     <style>
-        body {
+        * {
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #ffffff;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Barra Superior */
+        .top-bar {
+            background: #003b96;
+            color: white;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+        
+        .top-bar .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        /* Header Principal */
+        .header-main {
+            background: white;
+            border-bottom: 4px solid #ffc107;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .header-main::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, 
+                #ffc107 0%, 
+                #ffc107 25%, 
+                transparent 25%, 
+                transparent 50%, 
+                #ffc107 50%, 
+                #ffc107 75%, 
+                transparent 75%);
+            background-size: 40px 4px;
+        }
+        
+        .header-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo-institucional {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .logo-uniajc {
+            height: 60px;
+        }
+        
+        .logo-divider {
+            width: 2px;
+            height: 50px;
+            background: #ffc107;
+        }
+        
+        .facultad {
+            font-size: 15px;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .facultad strong {
+            color: #003b96;
+            display: block;
+            font-size: 16px;
+        }
+        
+        /* Banner del Simulador */
+        .simulator-banner {
             background: linear-gradient(135deg, #003b96 0%, #0052cc 100%);
-            min-height: 100vh;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
         
-        .header-pattern {
+        .simulator-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background-image: 
-                linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px),
-                linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px);
+                linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(255,255,255,0.05) 1px, transparent 1px);
             background-size: 20px 20px;
+            pointer-events: none;
         }
         
-        .accent-yellow {
-            color: #ffc107;
+        .simulator-banner .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
         
-        .border-yellow {
+        .simulator-banner h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: white;
+        }
+        
+        .simulator-banner .subtitle {
+            font-size: 18px;
+            font-weight: 300;
+            opacity: 0.95;
+            margin-bottom: 20px;
+        }
+        
+        .simulator-banner .decorative-line {
+            display: inline-block;
+            width: 100px;
+            height: 3px;
+            background: #ffc107;
+            margin: 0 auto;
+        }
+        
+        /* Selectores de Simulador */
+        .simulator-selector {
+            max-width: 1600px;
+            margin: -30px auto 0;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .selector-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .selector-btn {
+            flex: 1;
+            min-width: 280px;
+            background: white;
+            border: 3px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .selector-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,59,150,0.2);
             border-color: #ffc107;
         }
         
-        .bg-uniajc-blue {
-            background: #003b96;
+        .selector-btn.active {
+            background: linear-gradient(135deg, #003b96 0%, #0052cc 100%);
+            border-color: #ffc107;
+            color: white;
+            box-shadow: 0 8px 20px rgba(0,59,150,0.3);
         }
         
-        .bg-uniajc-light {
-            background: #f8f9fa;
+        .selector-btn .title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .selector-btn .description {
+            font-size: 13px;
+            opacity: 0.8;
+        }
+        
+        .selector-btn.active .description {
+            color: #ffc107;
+        }
+        
+        /* Main Content */
+        .main-content {
+            max-width: 1600px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        /* Footer */
+        .footer-main {
+            background: white;
+            border-top: 4px solid #ffc107;
+            margin-top: 60px;
+            padding: 40px 20px;
+            box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .footer-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            height: 50px;
+            margin-bottom: 16px;
+        }
+        
+        .footer-text {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .footer-lab {
+            color: #003b96;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .simulator-banner h1 {
+                font-size: 28px;
+            }
+            
+            .logo-uniajc {
+                height: 50px;
+            }
+            
+            .selector-btn {
+                min-width: 100%;
+            }
         }
     </style>
 </head>
@@ -59,87 +286,87 @@
             const [tipoMaquina, setTipoMaquina] = useState('paralelo');
 
             return (
-                <div className="max-w-[1600px] mx-auto p-4">
-                    {/* Header */}
-                    <header className="bg-white rounded-xl shadow-2xl mb-6 overflow-hidden">
-                        {/* Banner superior con patrón */}
-                        <div className="bg-uniajc-blue header-pattern py-3 px-6">
-                            <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-4">
-                                    <img src="https://www.uniajc.edu.co/wp-content/uploads/2021/04/thumbnail_Logo-UNIAJC-blanco-01-300x131.png" alt="UNIAJC" className="h-12 md:h-16" />
-                                </div>
-                                <div className="hidden md:block">
-                                    <div className="text-right text-white">
-                                        <p className="text-sm font-semibold">Laboratorio de Sistemas Microcontrolados</p>
-                                        <p className="text-xs opacity-90">Ingeniería Electrónica</p>
-                                    </div>
-                                </div>
-                            </div>
+                <>
+                    {/* Barra Superior */}
+                    <div className="top-bar">
+                        <div className="container">
+                            <div>Laboratorio de Sistemas Microcontrolados</div>
+                            <div>Ingeniería Electrónica</div>
                         </div>
-                        
-                        {/* Título principal */}
-                        <div className="p-6 bg-gradient-to-r from-blue-50 to-white">
-                            <h1 className="text-3xl md:text-4xl font-bold text-center mb-2 text-[#003b96]">
-                                Simulador CNC - DrawBot
-                            </h1>
-                            <div className="flex items-center justify-center gap-2 mb-4">
-                                <div className="h-1 w-20 bg-gradient-to-r from-transparent via-[#ffc107] to-transparent"></div>
-                                <p className="text-center text-gray-600 text-sm md:text-base px-4">
-                                    Simula y programa robots CNC con diferentes configuraciones de ejes
-                                </p>
-                                <div className="h-1 w-20 bg-gradient-to-r from-transparent via-[#ffc107] to-transparent"></div>
-                            </div>
-                            
-                            {/* Selector de tipo de máquina */}
-                            <div className="flex gap-4 max-w-4xl mx-auto">
-                                <button
-                                    onClick={() => setTipoMaquina('paralelo')}
-                                    className={`flex-1 py-4 px-2 rounded-lg font-bold text-sm md:text-lg transition-all transform hover:scale-105 shadow-md ${
-                                        tipoMaquina === 'paralelo'
-                                            ? 'bg-gradient-to-r from-[#003b96] to-[#0052cc] text-white shadow-xl border-2 border-[#ffc107]'
-                                            : 'bg-white text-gray-700 hover:bg-gray-50 border-2 border-gray-200'
-                                    }`}
-                                >
-                                    <div>Brazo Paralelo 5 Barras</div>
-                                    <div className={`text-xs mt-1 ${tipoMaquina === 'paralelo' ? 'text-yellow-300' : 'text-gray-500'}`}>
-                                        (Parallel 5-Bar Linkage)
-                                    </div>
-                                </button>
-                                
-                                <button
-                                    onClick={() => setTipoMaquina('cartesiano')}
-                                    className={`flex-1 py-4 px-2 rounded-lg font-bold text-sm md:text-lg transition-all transform hover:scale-105 shadow-md ${
-                                        tipoMaquina === 'cartesiano'
-                                            ? 'bg-gradient-to-r from-[#003b96] to-[#0052cc] text-white shadow-xl border-2 border-[#ffc107]'
-                                            : 'bg-white text-gray-700 hover:bg-gray-50 border-2 border-gray-200'
-                                    }`}
-                                >
-                                    <div>Motor por Eje (X, Y)</div>
-                                    <div className={`text-xs mt-1 ${tipoMaquina === 'cartesiano' ? 'text-yellow-300' : 'text-gray-500'}`}>
-                                        (Cartesian CNC)
-                                    </div>
-                                </button>
+                    </div>
+
+                    {/* Header Principal */}
+                    <header className="header-main">
+                        <div className="header-content">
+                            <div className="logo-institucional">
+                                <div className="logo-uniajc">
+                                    <img src="https://www.uniajc.edu.co/wp-content/uploads/2023/03/logo-uniajc.png" alt="UNIAJC" />
+                                </div>
+                                <div className="logo-divider"></div>
+                                <div className="facultad">
+                                    <strong>Simulador CNC</strong>
+                                    Proyecto DrawBot - Brazo Robótico
+                                </div>
                             </div>
                         </div>
                     </header>
 
-                    {/* Contenido principal */}
-                    <main>
+                    {/* Banner del Simulador */}
+                    <div className="simulator-banner">
+                        <div className="container">
+                            <h1>Simulador de Sistemas CNC</h1>
+                            <p className="subtitle">
+                                Simula y programa robots CNC con diferentes configuraciones de ejes
+                            </p>
+                            <div className="decorative-line"></div>
+                        </div>
+                    </div>
+
+                    {/* Selector de Simulador */}
+                    <div className="simulator-selector">
+                        <div className="selector-buttons">
+                            <div 
+                                className={`selector-btn ${tipoMaquina === 'paralelo' ? 'active' : ''}`}
+                                onClick={() => setTipoMaquina('paralelo')}
+                            >
+                                <div className="title">Brazo Paralelo 5 Barras</div>
+                                <div className="description">
+                                    Sistema de linkaje paralelo con cinemática inversa
+                                    <br/>(Parallel 5-Bar Linkage)
+                                </div>
+                            </div>
+                            
+                            <div 
+                                className={`selector-btn ${tipoMaquina === 'cartesiano' ? 'active' : ''}`}
+                                onClick={() => setTipoMaquina('cartesiano')}
+                            >
+                                <div className="title">Motor por Eje (X, Y)</div>
+                                <div className="description">
+                                    Sistema cartesiano con control independiente de ejes
+                                    <br/>(Cartesian CNC)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Contenido Principal */}
+                    <div className="main-content">
                         {tipoMaquina === 'paralelo' ? <BrazoParalelo5Barras /> : <MotorPorEje />}
-                    </main>
+                    </div>
 
                     {/* Footer */}
-                    <footer className="mt-8 bg-white rounded-xl shadow-lg p-6">
-                        <div className="text-center">
-                            <div className="flex items-center justify-center gap-3 mb-3">
-                                <img src="https://www.uniajc.edu.co/wp-content/uploads/2023/03/logo-uniajc.png" alt="UNIAJC" className="h-12" />
-                            </div>
-                            <p className="text-gray-600 text-sm mb-1">Laboratorio de Sistemas Microcontrolados</p>
-                            <p className="text-gray-500 text-xs mb-2">Ingeniería Electrónica</p>
-                            <p className="text-gray-500 text-xs">Simulador educativo de sistemas CNC © 2025</p>
+                    <footer className="footer-main">
+                        <div className="footer-content">
+                            <img src="https://www.uniajc.edu.co/wp-content/uploads/2023/03/logo-uniajc.png" 
+                                 alt="UNIAJC" className="footer-logo" />
+                            <p className="footer-lab">Laboratorio de Sistemas Microcontrolados</p>
+                            <p className="footer-text">Ingeniería Electrónica</p>
+                            <p className="footer-text" style={{fontSize: '12px', marginTop: '12px', color: '#999'}}>
+                                Simulador educativo de sistemas CNC © 2025
+                            </p>
                         </div>
                     </footer>
-                </div>
+                </>
             );
         }
 
