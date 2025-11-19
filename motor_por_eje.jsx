@@ -537,7 +537,7 @@ const MotorPorEje = () => {
 
   return (
     <div className="w-full max-w-7xl mx-auto p-6 bg-white rounded-xl shadow-2xl">
-      <h1 className="text-4xl font-bold text-center mb-2 bg-gradient-to-r from-blue-900 to-indigo-900 bg-clip-text text-transparent">
+      <h1 className="text-4xl font-bold text-center mb-2 bg-gradient-to-r from-[#003b96] to-[#0052cc] bg-clip-text text-transparent">
         Sistema Cartesiano - Motor por Eje
       </h1>
       <p className="text-center text-gray-600 mb-6 italic">
@@ -550,7 +550,7 @@ const MotorPorEje = () => {
           onClick={() => setModo('config')}
           className={`flex-1 py-3 rounded-lg font-semibold transition-all ${
             modo === 'config'
-              ? 'bg-gradient-to-r from-blue-900 to-blue-800 text-white shadow-lg'
+              ? 'bg-gradient-to-r from-[#003b96] to-blue-800 text-white shadow-lg'
               : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
           }`}
         >
@@ -587,10 +587,10 @@ const MotorPorEje = () => {
           <div className="space-y-4">
             {/* Configuración de motores */}
             <div className="bg-white p-4 rounded-lg shadow-lg">
-              <h2 className="text-lg font-semibold mb-3 text-blue-900">Config. Motores</h2>
+              <h2 className="text-lg font-semibold mb-3 text-[#003b96]">Config. Motores</h2>
               
               <div className="space-y-3">
-                <div className="bg-blue-50 p-3 rounded border border-blue-200">
+                <div className="bg-blue-50 p-3 rounded border border-[#ffc107]">
                   <h3 className="font-semibold text-sm mb-2">Motor X</h3>
                   <div className="space-y-2">
                     <div>
@@ -654,7 +654,7 @@ const MotorPorEje = () => {
 
             {/* Límites de trabajo */}
             <div className="bg-white p-4 rounded-lg shadow-lg">
-              <h2 className="text-lg font-semibold mb-3 text-blue-900">Límites</h2>
+              <h2 className="text-lg font-semibold mb-3 text-[#003b96]">Límites</h2>
               
               <div className="space-y-3">
                 <div>
@@ -709,10 +709,10 @@ const MotorPorEje = () => {
 
             {/* Control manual */}
             <div className="bg-white p-4 rounded-lg shadow-lg">
-              <h2 className="text-lg font-semibold mb-3 text-blue-900">Control Manual</h2>
+              <h2 className="text-lg font-semibold mb-3 text-[#003b96]">Control Manual</h2>
               
               <div className="space-y-3">
-                <div className="bg-blue-50 p-3 rounded border border-blue-200">
+                <div className="bg-blue-50 p-3 rounded border border-[#ffc107]">
                   <div className="flex justify-between mb-2">
                     <span className="text-sm font-medium">Posición X</span>
                     <span className="text-lg font-bold text-blue-600">{motorX.toFixed(2)} mm</span>
@@ -773,7 +773,7 @@ const MotorPorEje = () => {
                   
                   <button
                     onClick={irAHome}
-                    className="flex-1 bg-blue-900 text-white px-3 py-2 rounded font-semibold hover:bg-blue-800"
+                    className="flex-1 bg-[#003b96] text-white px-3 py-2 rounded font-semibold hover:bg-[#0052cc]"
                     disabled={ejecutando}
                   >
                     Home
@@ -783,8 +783,8 @@ const MotorPorEje = () => {
             </div>
 
             {/* Calculadora */}
-            <div className="bg-white p-4 rounded-lg shadow-lg border-2 border-blue-200">
-              <h2 className="text-lg font-semibold mb-3 text-blue-900">Calculadora</h2>
+            <div className="bg-white p-4 rounded-lg shadow-lg border-2 border-[#ffc107]">
+              <h2 className="text-lg font-semibold mb-3 text-[#003b96]">Calculadora</h2>
               
               <div className="space-y-3">
                 <div className="grid grid-cols-2 gap-2">
@@ -812,7 +812,7 @@ const MotorPorEje = () => {
 
                 <button
                   onClick={calcularPasos}
-                  className="w-full bg-blue-900 text-white py-2 rounded font-semibold hover:bg-blue-800"
+                  className="w-full bg-[#003b96] text-white py-2 rounded font-semibold hover:bg-[#0052cc]"
                 >
                   Calcular Pasos
                 </button>
@@ -857,7 +857,7 @@ const MotorPorEje = () => {
 
             {/* Acciones */}
             <div className="bg-white p-4 rounded-lg shadow-lg">
-              <h2 className="text-lg font-semibold mb-3 text-blue-900">Acciones</h2>
+              <h2 className="text-lg font-semibold mb-3 text-[#003b96]">Acciones</h2>
               
               <button
                 onClick={guardarConfiguracion}
@@ -890,7 +890,7 @@ const MotorPorEje = () => {
           <div className="space-y-4">
             {/* Info configuración */}
             <div className="bg-white p-4 rounded-lg shadow-lg">
-              <h2 className="text-lg font-semibold mb-3 text-blue-900">Config Actual</h2>
+              <h2 className="text-lg font-semibold mb-3 text-[#003b96]">Config Actual</h2>
               <div className="text-xs space-y-1 text-gray-600">
                 <div className="flex justify-between">
                   <span>Motor X:</span>
@@ -912,8 +912,8 @@ const MotorPorEje = () => {
             </div>
 
             {/* Calculadora */}
-            <div className="bg-white p-4 rounded-lg shadow-lg border-2 border-blue-200">
-              <h2 className="text-lg font-semibold mb-3 text-blue-900">Calculadora</h2>
+            <div className="bg-white p-4 rounded-lg shadow-lg border-2 border-[#ffc107]">
+              <h2 className="text-lg font-semibold mb-3 text-[#003b96]">Calculadora</h2>
               
               <div className="space-y-3">
                 <div className="grid grid-cols-2 gap-2">
@@ -939,7 +939,7 @@ const MotorPorEje = () => {
 
                 <button
                   onClick={calcularPasos}
-                  className="w-full bg-blue-900 text-white py-2 rounded font-semibold hover:bg-blue-800 text-sm"
+                  className="w-full bg-[#003b96] text-white py-2 rounded font-semibold hover:bg-[#0052cc] text-sm"
                 >
                   Calcular
                 </button>
@@ -976,7 +976,7 @@ const MotorPorEje = () => {
 
             {/* Editor G-code */}
             <div className="bg-white p-4 rounded-lg shadow-lg">
-              <h2 className="text-lg font-semibold mb-3 text-blue-900">Editor G-code</h2>
+              <h2 className="text-lg font-semibold mb-3 text-[#003b96]">Editor G-code</h2>
               <textarea
                 value={codigoGcode}
                 onChange={(e) => setCodigoGcode(e.target.value)}
@@ -989,7 +989,7 @@ const MotorPorEje = () => {
                 <button
                   onClick={ejecutarGcode}
                   disabled={ejecutando || !codigoGcode.trim()}
-                  className="bg-blue-900 text-white py-2 rounded font-semibold hover:bg-blue-800 disabled:bg-gray-300 text-sm"
+                  className="bg-[#003b96] text-white py-2 rounded font-semibold hover:bg-[#0052cc] disabled:bg-gray-300 text-sm"
                 >
                   {ejecutando ? '⏳ Ejecutando...' : '▶️ Ejecutar'}
                 </button>
@@ -1005,26 +1005,26 @@ const MotorPorEje = () => {
 
             {/* Programas predefinidos */}
             <div className="bg-white p-4 rounded-lg shadow-lg">
-              <h2 className="text-lg font-semibold mb-3 text-blue-900">Programas</h2>
+              <h2 className="text-lg font-semibold mb-3 text-[#003b96]">Programas</h2>
               <div className="space-y-2">
                 <button
                   onClick={generarCirculo}
                   disabled={ejecutando}
-                  className="w-full bg-indigo-900 text-white py-2 rounded font-semibold hover:bg-indigo-800 text-sm"
+                  className="w-full bg-[#003b96] text-white py-2 rounded font-semibold hover:bg-[#0052cc] text-sm"
                 >
                   Generar Círculo
                 </button>
                 <button
                   onClick={generarCuadrado}
                   disabled={ejecutando}
-                  className="w-full bg-indigo-900 text-white py-2 rounded font-semibold hover:bg-indigo-800 text-sm"
+                  className="w-full bg-[#003b96] text-white py-2 rounded font-semibold hover:bg-[#0052cc] text-sm"
                 >
                   Generar Cuadrado
                 </button>
                 <button
                   onClick={generarEstrella}
                   disabled={ejecutando}
-                  className="w-full bg-indigo-900 text-white py-2 rounded font-semibold hover:bg-indigo-800 text-sm"
+                  className="w-full bg-[#003b96] text-white py-2 rounded font-semibold hover:bg-[#0052cc] text-sm"
                 >
                   Generar Estrella
                 </button>
@@ -1033,7 +1033,7 @@ const MotorPorEje = () => {
 
             {/* Acciones */}
             <div className="bg-white p-4 rounded-lg shadow-lg">
-              <h2 className="text-lg font-semibold mb-3 text-blue-900">Acciones</h2>
+              <h2 className="text-lg font-semibold mb-3 text-[#003b96]">Acciones</h2>
               <div className="space-y-2">
                 <button
                   onClick={limpiar}
@@ -1080,8 +1080,8 @@ const MotorPorEje = () => {
 
       {/* Info */}
       <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="bg-blue-50 p-4 rounded-lg border-2 border-blue-200">
-          <h3 className="font-semibold text-blue-900 mb-2">Sistema Cartesiano</h3>
+        <div className="bg-blue-50 p-4 rounded-lg border-2 border-[#ffc107]">
+          <h3 className="font-semibold text-[#003b96] mb-2">Sistema Cartesiano</h3>
           <ul className="text-sm text-blue-800 space-y-1">
             <li>• <strong>Un motor por eje</strong></li>
             <li>• Motores paso a paso (X, Y)</li>
@@ -1092,7 +1092,7 @@ const MotorPorEje = () => {
         </div>
         
         <div className="bg-indigo-50 p-4 rounded-lg border-2 border-indigo-200">
-          <h3 className="font-semibold text-indigo-900 mb-2">Comandos G-code</h3>
+          <h3 className="font-semibold text-[#003b96] mb-2">Comandos G-code</h3>
           <ul className="text-sm text-indigo-800 space-y-1 font-mono">
             <li><strong>G0/G1</strong> X Y F - Mover</li>
             <li><strong>G28</strong> - Home (0,0)</li>

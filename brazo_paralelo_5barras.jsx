@@ -926,7 +926,7 @@ const BrazoParalelo5Barras = () => {
 
   return (
     <div className="w-full max-w-7xl mx-auto p-6 bg-white rounded-xl shadow-2xl">
-      <h1 className="text-4xl font-bold text-center mb-2 bg-gradient-to-r from-blue-900 to-indigo-900 bg-clip-text text-transparent">
+      <h1 className="text-4xl font-bold text-center mb-2 bg-gradient-to-r from-[#003b96] to-[#0052cc] bg-clip-text text-transparent">
         Mecanismo de 5 Barras Paralelo
       </h1>
       <p className="text-center text-gray-600 mb-6 italic">
@@ -939,7 +939,7 @@ const BrazoParalelo5Barras = () => {
           onClick={() => setModo('config')}
           className={`flex-1 py-3 rounded-lg font-semibold transition-all ${
             modo === 'config'
-              ? 'bg-gradient-to-r from-blue-900 to-blue-800 text-white shadow-lg'
+              ? 'bg-gradient-to-r from-[#003b96] to-blue-800 text-white shadow-lg'
               : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
           }`}
         >
@@ -974,11 +974,14 @@ const BrazoParalelo5Barras = () => {
           />
           
           {/* Explicación de movimientos */}
-          <div className="mt-4 bg-blue-50 border border-blue-200 rounded-lg p-4">
-            <h3 className="text-sm font-bold text-blue-900 mb-3">Cinemática del Sistema de 5 Barras</h3>
+          <div className="mt-4 bg-blue-50 border-2 border-[#ffc107] rounded-lg p-4 shadow-md">
+            <h3 className="text-sm font-bold text-[#003b96] mb-3 flex items-center gap-2">
+              <span className="inline-block w-1 h-5 bg-[#ffc107]"></span>
+              Cinemática del Sistema de 5 Barras
+            </h3>
             <div className="space-y-2 text-xs text-gray-700">
-              <div className="bg-white p-3 rounded border border-blue-100">
-                <p className="font-semibold text-blue-800 mb-2">Movimiento en Eje Horizontal (X):</p>
+              <div className="bg-white p-3 rounded border border-gray-200 shadow-sm">
+                <p className="font-semibold text-[#003b96] mb-2">Movimiento en Eje Horizontal (X):</p>
                 <p className="leading-relaxed mb-2">
                   Para desplazar el efector final hacia la derecha, los servomotores rotan en direcciones opuestas:
                 </p>
@@ -990,8 +993,8 @@ const BrazoParalelo5Barras = () => {
                 </p>
               </div>
               
-              <div className="bg-white p-3 rounded border border-blue-100">
-                <p className="font-semibold text-blue-800 mb-2">Movimiento en Eje Vertical (Y):</p>
+              <div className="bg-white p-3 rounded border border-gray-200 shadow-sm">
+                <p className="font-semibold text-[#003b96] mb-2">Movimiento en Eje Vertical (Y):</p>
                 <p className="leading-relaxed mb-2">
                   Para desplazar el efector final hacia arriba, ambos servomotores rotan coordinadamente:
                 </p>
@@ -1004,7 +1007,7 @@ const BrazoParalelo5Barras = () => {
               </div>
               
               <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-3 rounded border border-indigo-200">
-                <p className="font-semibold text-indigo-900 mb-2">Cinemática Inversa - Modelo Matemático:</p>
+                <p className="font-semibold text-[#003b96] mb-2">Cinemática Inversa - Modelo Matemático:</p>
                 <p className="leading-relaxed mb-2">
                   Dada una posición objetivo {String.raw`$\mathbf{P}(x, y)$`} en el espacio de trabajo, el sistema calcula los ángulos mediante:
                 </p>
@@ -1030,7 +1033,7 @@ const BrazoParalelo5Barras = () => {
           <div className="space-y-4">
             {/* Configuración de dimensiones */}
             <div className="bg-white p-4 rounded-lg shadow-lg">
-              <h2 className="text-lg font-semibold mb-3 text-blue-900">Dimensiones</h2>
+              <h2 className="text-lg font-semibold mb-3 text-[#003b96]">Dimensiones</h2>
               
               <div className="space-y-3">
                 <div>
@@ -1112,7 +1115,7 @@ const BrazoParalelo5Barras = () => {
 
             {/* Control manual de servos */}
             <div className="bg-white p-4 rounded-lg shadow-lg">
-              <h2 className="text-lg font-semibold mb-3 text-blue-900">Control Manual</h2>
+              <h2 className="text-lg font-semibold mb-3 text-[#003b96]">Control Manual</h2>
               
               <div className="bg-orange-50 p-3 rounded border border-orange-200 mb-3">
                 <div className="flex justify-between mb-2">
@@ -1215,7 +1218,7 @@ const BrazoParalelo5Barras = () => {
                 
                 <button
                   onClick={irAHome}
-                  className="flex-1 bg-blue-900 text-white px-3 py-2 rounded font-semibold hover:bg-blue-800"
+                  className="flex-1 bg-[#003b96] text-white px-3 py-2 rounded font-semibold hover:bg-[#0052cc]"
                   disabled={ejecutando}
                 >
                   Home
@@ -1224,8 +1227,8 @@ const BrazoParalelo5Barras = () => {
             </div>
 
             {/* Calculadora de posición */}
-            <div className="bg-white p-4 rounded-lg shadow-lg border-2 border-blue-200">
-              <h2 className="text-lg font-semibold mb-3 text-blue-900">Calculadora de Posición</h2>
+            <div className="bg-white p-4 rounded-lg shadow-lg border-2 border-[#ffc107]">
+              <h2 className="text-lg font-semibold mb-3 text-[#003b96]">Calculadora de Posición</h2>
               
               <div className="space-y-3">
                 <div>
@@ -1256,7 +1259,7 @@ const BrazoParalelo5Barras = () => {
 
                 <button
                   onClick={calcularAngulos}
-                  className="w-full bg-blue-900 text-white py-2 rounded font-semibold hover:bg-blue-800"
+                  className="w-full bg-[#003b96] text-white py-2 rounded font-semibold hover:bg-[#0052cc]"
                 >
                   Calcular Ángulos
                 </button>
@@ -1306,7 +1309,7 @@ const BrazoParalelo5Barras = () => {
 
             {/* Acciones de configuración */}
             <div className="bg-white p-4 rounded-lg shadow-lg">
-              <h2 className="text-lg font-semibold mb-3 text-blue-900">Acciones</h2>
+              <h2 className="text-lg font-semibold mb-3 text-[#003b96]">Acciones</h2>
               
               <button
                 onClick={guardarConfiguracion}
@@ -1339,7 +1342,7 @@ const BrazoParalelo5Barras = () => {
           <div className="space-y-4">
             {/* Info de configuración actual */}
             <div className="bg-white p-4 rounded-lg shadow-lg">
-              <h2 className="text-lg font-semibold mb-3 text-blue-900">Config Actual</h2>
+              <h2 className="text-lg font-semibold mb-3 text-[#003b96]">Config Actual</h2>
               <div className="text-xs space-y-1 text-gray-600">
                 <div className="flex justify-between">
                   <span>Brazos Izq:</span>
@@ -1361,8 +1364,8 @@ const BrazoParalelo5Barras = () => {
             </div>
 
             {/* Calculadora de posición */}
-            <div className="bg-white p-4 rounded-lg shadow-lg border-2 border-blue-200">
-              <h2 className="text-lg font-semibold mb-3 text-blue-900">Calculadora</h2>
+            <div className="bg-white p-4 rounded-lg shadow-lg border-2 border-[#ffc107]">
+              <h2 className="text-lg font-semibold mb-3 text-[#003b96]">Calculadora</h2>
               
               <div className="space-y-3">
                 <div className="grid grid-cols-2 gap-2">
@@ -1388,7 +1391,7 @@ const BrazoParalelo5Barras = () => {
 
                 <button
                   onClick={calcularAngulos}
-                  className="w-full bg-blue-900 text-white py-2 rounded font-semibold hover:bg-blue-800 text-sm"
+                  className="w-full bg-[#003b96] text-white py-2 rounded font-semibold hover:bg-[#0052cc] text-sm"
                 >
                   Calcular
                 </button>
@@ -1425,7 +1428,7 @@ const BrazoParalelo5Barras = () => {
 
             {/* Editor G-code */}
             <div className="bg-white p-4 rounded-lg shadow-lg">
-              <h2 className="text-lg font-semibold mb-3 text-blue-900">Editor G-code</h2>
+              <h2 className="text-lg font-semibold mb-3 text-[#003b96]">Editor G-code</h2>
               <textarea
                 value={codigoGcode}
                 onChange={(e) => setCodigoGcode(e.target.value)}
@@ -1438,7 +1441,7 @@ const BrazoParalelo5Barras = () => {
                 <button
                   onClick={ejecutarGcode}
                   disabled={ejecutando || !codigoGcode.trim()}
-                  className="bg-blue-900 text-white py-2 rounded font-semibold hover:bg-blue-800 disabled:bg-gray-300 text-sm"
+                  className="bg-[#003b96] text-white py-2 rounded font-semibold hover:bg-[#0052cc] disabled:bg-gray-300 text-sm"
                 >
                   {ejecutando ? 'Ejecutando...' : 'Ejecutar'}
                 </button>
@@ -1454,19 +1457,19 @@ const BrazoParalelo5Barras = () => {
 
             {/* Programas predefinidos */}
             <div className="bg-white p-4 rounded-lg shadow-lg">
-              <h2 className="text-lg font-semibold mb-3 text-blue-900">Programas</h2>
+              <h2 className="text-lg font-semibold mb-3 text-[#003b96]">Programas</h2>
               <div className="space-y-2">
                 <button
                   onClick={generarCirculo}
                   disabled={ejecutando}
-                  className="w-full bg-indigo-900 text-white py-2 rounded font-semibold hover:bg-indigo-800 text-sm"
+                  className="w-full bg-[#003b96] text-white py-2 rounded font-semibold hover:bg-[#0052cc] text-sm"
                 >
                   Generar Círculo
                 </button>
                 <button
                   onClick={generarCuadrado}
                   disabled={ejecutando}
-                  className="w-full bg-indigo-900 text-white py-2 rounded font-semibold hover:bg-indigo-800 text-sm"
+                  className="w-full bg-[#003b96] text-white py-2 rounded font-semibold hover:bg-[#0052cc] text-sm"
                 >
                   Generar Cuadrado
                 </button>
@@ -1475,7 +1478,7 @@ const BrazoParalelo5Barras = () => {
 
             {/* Acciones */}
             <div className="bg-white p-4 rounded-lg shadow-lg">
-              <h2 className="text-lg font-semibold mb-3 text-blue-900">Acciones</h2>
+              <h2 className="text-lg font-semibold mb-3 text-[#003b96]">Acciones</h2>
               <div className="space-y-2">
                 <button
                   onClick={limpiar}
@@ -1522,8 +1525,8 @@ const BrazoParalelo5Barras = () => {
 
       {/* Info */}
       <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="bg-blue-50 p-4 rounded-lg border-2 border-blue-200">
-          <h3 className="font-semibold text-blue-900 mb-2">Configuración</h3>
+        <div className="bg-blue-50 p-4 rounded-lg border-2 border-[#ffc107]">
+          <h3 className="font-semibold text-[#003b96] mb-2">Configuración</h3>
           <ul className="text-sm text-blue-800 space-y-1">
             <li>• <strong>Mecanismo de 5 Barras</strong></li>
             <li>• 2 servos en la base (paralelos)</li>
@@ -1534,7 +1537,7 @@ const BrazoParalelo5Barras = () => {
         </div>
         
         <div className="bg-indigo-50 p-4 rounded-lg border-2 border-indigo-200">
-          <h3 className="font-semibold text-indigo-900 mb-2">Comandos G-code</h3>
+          <h3 className="font-semibold text-[#003b96] mb-2">Comandos G-code</h3>
           <ul className="text-sm text-indigo-800 space-y-1 font-mono">
             <li><strong>G0/G1</strong> X Y F - Mover</li>
             <li><strong>G28</strong> - Home</li>
